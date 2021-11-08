@@ -30,7 +30,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="/user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/uts/public/user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -47,7 +47,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="/jadwal" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/uts/public/jadwal" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -64,7 +64,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="/dosen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/uts/public/dosen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -81,7 +81,7 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="/kelas" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/uts/public/kelas" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
