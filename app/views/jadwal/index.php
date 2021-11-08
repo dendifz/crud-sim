@@ -31,7 +31,15 @@
             <div class="row mb-3">
               <div class="col-lg-6">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="" name="key">
+                  <select class="form-control" name="key">
+                      <option value="Senin">Senin</option>
+                      <option value="Selasa">Selasa</option>
+                      <option value="Rabu">Rabu</option>
+                      <option value="Kamis">Kamis</option>
+                      <option value="Jumat">Jumat</option>
+                      <option value="Sabtu">Sabtu</option>
+                      <option value="Minggu">Minggu</option>
+                    </select>
                   <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="submit">Cari Data</button>
                     <a class="btn btn-outline-danger" href="<?= base_url; ?>/jadwal">Reset</a>
@@ -57,16 +65,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <?php $no=1; ?> 
+                  <?php $no=1; $hasil = array(1, 2, 3); ?> 
                     <?php foreach ($data['jadwal'] as $row) :?>
                     <tr>
                       <td><?= $no; ?></td>
                       <td><?= $row['hari'];?></td>
                       <td><?= $row['jamkuliah'];?></td>
                       <td><?= $row['semester'];?></td>
-                      <td><?php foreach ($data['Prodi'] as $row1) :?>
-                      <?php if($row['prodi_id'] == $row1['prodi_id']) ?><?= $row1['nama_prodi']; ?> <?php $no++; endforeach; ?></option>
-                     - <?= $row['nama_kelas'];?></td>
+                      <td><?php foreach ($data['kelas'] as $row1) :?>
+                        <?php if($row['nama_kelas'] == $row1['nama_kelas']) { echo $row1['nama_prodi']; }?> 
+                       <?php endforeach; ?>  <?= $row['nama_kelas'];?>
+                        </option>
+                     </td>
                       <td><?= $row['nama_matakuliah'];?></td>
                       <td><?= $row['sks'];?></td>
                       <td><?= $row['nama_dosen'];?></td>

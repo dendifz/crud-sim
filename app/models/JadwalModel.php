@@ -30,12 +30,13 @@ class JadwalModel {
 
 	public function tambahJadwal($data)
 	{
-		$query = "INSERT INTO jadwal (nama_jadwal, prodi_id, semester, Tahun_akademik) VALUES(:nama_jadwal, :prodi_id, :semester, :Tahun_akademik)";
+		$query = "INSERT INTO jadwal (hari, jam_id, dosen_id, kelas_id, matakuliah_id, ruangan_id) VALUES(:hari, :jam_id, :kelas_id, :matakuliah_id), :ruangan_Id)";
 		$this->db->query($query);
-		$this->db->bind('nama_jadwal', $data['nama_jadwal']);
-		$this->db->bind('prodi_id', $data['prodi_id']);
-		$this->db->bind('semester', $data['semester']);
-		$this->db->bind('Tahun_akademik', $data['Tahun_akademik']);
+		$this->db->bind('hari', $data['hari']);
+		$this->db->bind('jam_id', $data['jam_id']);
+		$this->db->bind('kelas_id', $data['kelas_id']);
+		$this->db->bind('matakuliah_id', $data['matakuliah_id']);
+		$this->db->bind('ruangan_id', $data['ruangan_id']);
 		$this->db->execute();
 
 		return $this->db->rowCount();
@@ -43,13 +44,14 @@ class JadwalModel {
 
 	public function updateDataJadwal($data)
 	{
-		$query = "UPDATE jadwal SET nama_jadwal=:nama_jadwal, prodi_id=:prodi_id, semester=:semester, semester=:semester, Tahun_akademik=:Tahun_akademik WHERE jadwal_id=:jadwal_id";
+		$query = "UPDATE jadwal SET hari=:hari, jam_id=:jam_id, kelas_id=:kelas_id, kelas_id=:kelas_id, matakuliah_id=:matakuliah_id, ruangan_id=:ruangan_id WHERE jadwal_id=:jadwal_id";
 		$this->db->query($query);
 		$this->db->bind('jadwal_id',$data['jadwal_id']);
-		$this->db->bind('nama_jadwal', $data['nama_jadwal']);
-		$this->db->bind('prodi_id', $data['prodi_id']);
-		$this->db->bind('semester', $data['semester']);
-		$this->db->bind('Tahun_akademik', $data['Tahun_akademik']);
+		$this->db->bind('hari', $data['hari']);
+		$this->db->bind('jam_id', $data['jam_id']);
+		$this->db->bind('kelas_id', $data['kelas_id']);
+		$this->db->bind('matakuliah_id', $data['matakuliah_id']);
+		$this->db->bind('ruangan_id', $data['ruangan_id']);
 		$this->db->execute();
 
 		return $this->db->rowCount();
@@ -67,7 +69,13 @@ class JadwalModel {
 	public function cariJadwal()
 	{
 		$key = $_POST['key'];
-		$this->db->query("SELECT jadwal.*, prodi.nama_prodi FROM " . $this->table . " JOIN prodi ON prodi.prodi_id = jadwal.prodi_id WHERE nama_jadwal LIKE :key");
+		$this->db->query("SELECT jadwal.*, jam_kuliah.*, dosen.*, kelas.*, matakuliah.*, ruangan.* FROM " . $this->table . 
+		" JOIN jam_kuliah ON jam_kuliah.jam_id = jadwal.jam_id 
+		JOIN dosen ON dosen.dosen_id = jadwal.dosen_id
+		JOIN kelas ON kelas.kelas_id = jadwal.kelas_id
+		JOIN matakuliah ON matakuliah.matakuliah_id = jadwal.matakuliah_id
+		JOIN ruangan ON ruangan.ruangan_id = jadwal.ruangan_id
+		WHERE hari LIKE :key");
 		$this->db->bind('key',"%$key%");
 		return $this->db->resultSet();
 	}

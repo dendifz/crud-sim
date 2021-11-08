@@ -45,14 +45,14 @@
     background-color: #DDEFEF;
     border: solid 1px #DDEEEE;
     color: #336B6B;
-    padding: 10px;
+    padding: 5px;
     text-align: left;
     text-shadow: 1px 1px 1px #fff;
 }
 .table tbody td {
     border: solid 1px #DDEEEE;
     color: #333;
-    padding: 10px;
+    padding: 5px;
     text-shadow: 1px 1px 1px #fff;
 }
 </style>
@@ -67,24 +67,36 @@
   <section class="sheet padding-15mm">
       <h1 class="center" style="text-decoration: underline;margin-top: 20px;"><?= $data['title'] ?></h1>
       <table class="table">
-                  <thead>                  
+      <thead>                  
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Nama kelas</th>
-                      <th>Prodi</th>
-                      <th>Semester</th>
-                      <th>Tahun Akademik</th>
+                      <th>Hari</th>
+                      <th>Jam</th>
+                      <th>Smstr</th>
+                      <th>Kelas</th>
+                      <th>Mata Kuliah</th>
+                      <th>SKS</th>
+                      <th>Dosen Pengajar</th>
+                      <th>Ruang</th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php $no=1; ?> 
-                    <?php foreach ($data['kelas'] as $row) :?>
+                    <?php foreach ($data['jadwal'] as $row) :?>
                     <tr>
                       <td><?= $no; ?></td>
-                      <td><?= $row['nama_kelas'];?></td>
-                      <td><?= $row['nama_prodi'];?></td>
+                      <td><?= $row['hari'];?></td>
+                      <td><?= $row['jamkuliah'];?></td>
                       <td><?= $row['semester'];?></td>
-                      <td><?= $row['Tahun_akademik'];?></td>
+                      <td><?php foreach ($data['kelas'] as $row1) :?>
+                        <?php if($row['nama_kelas'] == $row1['nama_kelas']) { echo $row1['nama_prodi']; }?> 
+                       <?php endforeach; ?>  <?= $row['nama_kelas'];?>
+                        </option>
+                     </td>
+                      <td><?= $row['nama_matakuliah'];?></td>
+                      <td><?= $row['sks'];?></td>
+                      <td><?= $row['nama_dosen'];?></td>
+                      <td><?= $row['ruangan_nama'];?></td>
                     </tr>
                     <?php $no++; endforeach; ?>
                   </tbody>

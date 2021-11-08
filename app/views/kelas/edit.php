@@ -29,7 +29,6 @@
                   <div class="form-group">
                     <label >Prodi</label>
                     <select class="form-control" name="prodi_id">
-                        <option value="">Pilih</option>
                         <?php foreach ($data['Prodi'] as $row) :?>
                         <option value="<?= $row['prodi_id']; ?>" <?php if($data['kelas']['prodi_id'] == $row['prodi_id']) { echo "selected"; } ?>><?= $row['nama_prodi']; ?></option>
                       <?php endforeach; ?>
