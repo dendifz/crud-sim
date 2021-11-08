@@ -19,29 +19,61 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="<?= base_url; ?>/kelas/updatekelas" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="kelas_id" value="<?= $data['kelas']['kelas_id']; ?>">
+              <form role="form" action="<?= base_url; ?>/jadwal/updatejadwal" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="jadwal_id" value="<?= $data['jadwal']['jadwal_id']; ?>">
                 <div class="card-body">
                 <div class="form-group">
-                    <label >Nama Kelas</label>
-                    <input type="text" class="form-control" placeholder="masukkan nama kelas." name="nama_kelas" value="<?= $data['kelas']['nama_kelas'];?>">
+                    <label >Hari</label>
+                    <select class="form-control" name="hari">
+                      <option value="<?= $data['jadwal']['hari'];?>"> <?= $data['jadwal']['hari'];?></option>
+                      <option value="Senin">Senin</option>
+                      <option value="Selasa">Selasa</option>
+                      <option value="Rabu">Rabu</option>
+                      <option value="Kamis">Kamis</option>
+                      <option value="Jumat">Jumat</option>
+                      <option value="Sabtu">Sabtu</option>
+                      <option value="Minggu">Minggu</option>
+                    </select>
                   </div>
                   <div class="form-group">
-                    <label >Prodi</label>
-                    <select class="form-control" name="prodi_id">
-                        <option value="">Pilih</option>
-                        <?php foreach ($data['Prodi'] as $row) :?>
-                        <option value="<?= $row['prodi_id']; ?>" <?php if($data['kelas']['prodi_id'] == $row['prodi_id']) { echo "selected"; } ?>><?= $row['nama_prodi']; ?></option>
+                    <label >Jam Kuliah</label>
+                    <select class="form-control" name="jam_id">
+                         <?php foreach ($data['Jamkuliah'] as $row) :?>
+                          <option value="<?= $row['jam_id']; ?>" <?php if($data['jadwal']['jam_id'] == $row['jam_id']) { echo "selected"; } ?>><?= $row['jamkuliah']; ?></option>
                       <?php endforeach; ?>
                       </select>
                   </div>
                   <div class="form-group">
-                    <label >Semester</label>
-                    <input type="text" class="form-control" placeholder="masukkan semester." name="semester" value="<?= $data['kelas']['semester'];?>">
+                    <label>Kelas ( Semester )</label>
+                    <select class="form-control" name="kelas_id">
+                         <?php foreach ($data['kelas'] as $row)  :?>
+                          <option value="<?= $row['kelas_id']; ?>" <?php if($data['jadwal']['kelas_id'] == $row['kelas_id']) { echo "selected"; } ?>> <?= $row['nama_prodi']; ?>  - <?= $row['nama_kelas']; ?> ( <?= $row['semester']; ?> )</option>
+                      <?php endforeach; ?>
+                      </select>
                   </div>
                   <div class="form-group">
-                    <label >Tahun Akademik</label>
-                    <input type="text" class="form-control" placeholder="masukkan tahun akademik." name="Tahun_akademik" value="<?= $data['kelas']['Tahun_akademik'];?>">
+                    <label >Matakuliah ( SKS )</label>
+                    <select class="form-control" name="matakuliah_id">
+                         <?php foreach ($data['matakuliah'] as $row) :?>
+                          <option value="<?= $row['matakuliah_id']; ?>" <?php if($data['jadwal']['matakuliah_id'] == $row['matakuliah_id']) { echo "selected"; } ?>><?= $row['nama_matakuliah']; ?> ( <?= $row['sks']; ?> )</option>
+                      <?php endforeach; ?>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label >Dosen Pengajar</label>
+                    <select class="form-control" name="dosen_id">
+                        <?php foreach ($data['dosen'] as $row) :?>
+                          <option value="<?= $row['dosen_id']; ?>" <?php if($data['jadwal']['dosen_id'] == $row['dosen_id']) { echo "selected"; } ?>><?= $row['nama_dosen']; ?> ( <?= $row['nama_pen']; ?> )</option>
+                      <?php endforeach; ?>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label >Ruangan</label>
+                    <select class="form-control" name="ruangan_id">
+                         <?php foreach ($data['ruangan'] as $row) :?>
+                          <option value="<?= $row['ruangan_id']; ?>" <?php if($data['jadwal']['ruangan_id'] == $row['ruangan_id']) { echo "selected"; } ?>><?= $row['ruangan_nama']; ?></option>
+                      <?php endforeach; ?>
+                      </select>
                   </div>
                 </div>
                 <!-- /.card-body -->

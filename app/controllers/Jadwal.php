@@ -15,7 +15,6 @@ class jadwal extends Controller {
 	{
 		$data['title'] = 'Data Jadwal';
 		$data['jadwal'] = $this->model('JadwalModel')->getAllJadwal(); 
-		$data['Prodi'] = $this->model('ProdiModel')->getAllProdi();
 		$data['kelas'] = $this->model('KelasModel')->getAllKelas();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
@@ -61,9 +60,11 @@ class jadwal extends Controller {
 			foreach($data['jadwal'] as $row) {
 			    $pdf->Cell(15,6,$row['hari'],1);
 			    $pdf->Cell(25,6,$row['jamkuliah'],1);
-				$pdf->Cell(5,6,$row['semester'],1);
 				foreach ($data['kelas'] as $row1)
-				if($row['nama_kelas'] == $row1['nama_kelas'])
+				if($row['kelas_id'] == $row1['kelas_id'])
+				$pdf->Cell(5,6,$row1['semester'],1);
+				foreach ($data['kelas'] as $row1)
+				if($row['kelas_id'] == $row1['kelas_id'])
 			    $pdf->Cell(25,6,$row1['nama_prodi'] .' - ' .$row['nama_kelas'] ,1); 
 				$pdf->Cell(60,6,$row['nama_matakuliah'],1);
 			    $pdf->Cell(10,6,$row['sks'],1);
@@ -91,6 +92,13 @@ class jadwal extends Controller {
 
 		$data['title'] = 'Detail Jadwal';
 		$data['jadwal'] = $this->model('JadwalModel')->getJadwalById($id);
+		$data['Jamkuliah'] = $this->model('JamkuliahModel')->getAllJamkuliah();
+		$data['prodi'] = $this->model('ProdiModel')->getAllProdi();
+		$data['kelas'] = $this->model('KelasModel')->getAllKelas();
+		$data['dosen'] = $this->model('DosenModel')->getAllDosen();
+		$data['matakuliah'] = $this->model('MatakuliahModel')->getAllMatakuliah();
+		$data['pendidikan'] = $this->model('PendidikanModel')->getAllPendidikan();
+		$data['ruangan'] = $this->model('RuanganModel')->getAllRuangan(); 
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('jadwal/edit', $data);

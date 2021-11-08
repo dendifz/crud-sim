@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="<?= base_url; ?>/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="https://elearning.pnj.ac.id/theme/image.php/adaptable/theme/1624415855/favicon">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->

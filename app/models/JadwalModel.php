@@ -30,10 +30,11 @@ class JadwalModel {
 
 	public function tambahJadwal($data)
 	{
-		$query = "INSERT INTO jadwal (hari, jam_id, dosen_id, kelas_id, matakuliah_id, ruangan_id) VALUES(:hari, :jam_id, :kelas_id, :matakuliah_id), :ruangan_Id)";
+		$query = "INSERT INTO jadwal (hari, jam_id, dosen_id, kelas_id, matakuliah_id, ruangan_id) VALUES(:hari, :jam_id, :dosen_id, :kelas_id, :matakuliah_id, :ruangan_id)";
 		$this->db->query($query);
 		$this->db->bind('hari', $data['hari']);
 		$this->db->bind('jam_id', $data['jam_id']);
+		$this->db->bind('dosen_id', $data['dosen_id']);
 		$this->db->bind('kelas_id', $data['kelas_id']);
 		$this->db->bind('matakuliah_id', $data['matakuliah_id']);
 		$this->db->bind('ruangan_id', $data['ruangan_id']);
