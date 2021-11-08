@@ -24,7 +24,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label >Jam Kuliah</label>
-                    <input type="text" class="form-control" placeholder="masukkan judul buku..." name="jamkuliah" value="<?= $data['Jamkuliah']['jamkuliah'];?>">
+                    <input type="text" class="form-control" placeholder="masukkan jam..." name="jamkuliah" value="<?= $data['Jamkuliah']['jamkuliah'];?>">
                   </div>
                   
                 </div>

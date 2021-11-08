@@ -24,7 +24,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label >Ruangan Kuliah</label>
-                    <input type="text" class="form-control" placeholder="masukkan judul buku..." name="ruangan" value="<?= $data['ruangan']['ruangan'];?>">
+                    <input type="text" class="form-control" placeholder="masukkan ruangan..." name="ruangan" value="<?= $data['ruangan']['ruangan'];?>">
                   </div>
                   
                 </div>
