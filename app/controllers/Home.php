@@ -12,6 +12,10 @@ class Home extends Controller {
 	public function index()
 	{
 		$data['title'] = 'Halaman Home';
+		$data['jmljadwal'] = $this->model('HomeModel')->getJumlahJadwal(); 
+		$data['jmlkelas'] = $this->model('HomeModel')->getJumlahKelas();
+		$data['jmldosen'] = $this->model('HomeModel')->getJumlahDosen();  
+		$data['jmluser'] = $this->model('HomeModel')->getJumlahUser(); 
 
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
