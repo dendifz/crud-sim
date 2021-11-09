@@ -20,11 +20,11 @@
               <!-- /.card-header -->
               <!-- form start -->
               <form role="form" action="<?= base_url; ?>/ruangan/updateruangan" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="jam_id" value="<?= $data['ruangan']['jam_id']; ?>">
+                <input type="hidden" name="ruangan_id" value="<?= $data['ruangan']['ruangan_id']; ?>">
                 <div class="card-body">
                   <div class="form-group">
                     <label >Ruangan Kuliah</label>
-                    <input type="text" class="form-control" placeholder="masukkan ruangan..." name="ruangan" value="<?= $data['ruangan']['ruangan'];?>">
+                    <input type="text" class="form-control" placeholder="masukkan ruangan..." name="ruangan_nama" value="<?= $data['ruangan']['ruangan_nama'];?>">
                   </div>
                   
                 </div>

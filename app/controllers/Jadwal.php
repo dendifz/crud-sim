@@ -80,7 +80,7 @@ class jadwal extends Controller {
 	{
 		$data['title'] = 'Data Jadwal';
 		$data['jadwal'] = $this->model('JadwalModel')->cariJadwal();
-		$data['Prodi'] = $this->model('ProdiModel')->getAllProdi();
+		$data['kelas'] = $this->model('KelasModel')->getAllKelas();
 		$data['key'] = $_POST['key'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);

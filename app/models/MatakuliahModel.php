@@ -37,9 +37,12 @@ class MatakuliahModel {
 
 	public function updateDataMatakuliah($data)
 	{
-		$query = "UPDATE " . $this->table . " SET matakuliah=:matakuliah WHERE matakuliah_id=:matakuliah_id";
+		$query = "UPDATE " . $this->table . " SET nama_matakuliah=:nama_matakuliah, semester=:semester, sks=:sks WHERE matakuliah_id=:matakuliah_id";
 		$this->db->query($query);
 		$this->db->bind('matakuliah_id',$data['matakuliah_id']);
+		$this->db->bind('nama_matakuliah',$data['nama_matakuliah']);
+		$this->db->bind('semester',$data['semester']);
+		$this->db->bind('sks',$data['sks']);
 		$this->db->execute();
 
 		return $this->db->rowCount();
