@@ -53,4 +53,13 @@ class PendidikanModel {
 		return $this->db->rowCount();
 	}
 
+	public function cekPendidikan($id)
+	{
+		$this->db->query('SELECT COUNT(pend_id) FROM dosen WHERE pend_id=:pend_id');
+		$this->db->bind('pend_id',$id);
+		$this->db->execute();
+
+		return $this->db->single();
+    }
+
 }

@@ -53,4 +53,12 @@ class ProdiModel {
 		return $this->db->rowCount();
 	}
 
+	public function cekProdi($id)
+	{
+		$this->db->query('SELECT COUNT(prodi_id) FROM kelas WHERE prodi_id=:prodi_id');
+		$this->db->bind('prodi_id',$id);
+		$this->db->execute();
+
+		return $this->db->single();
+    }
 }

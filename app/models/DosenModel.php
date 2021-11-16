@@ -66,4 +66,13 @@ class DosenModel {
 		$this->db->bind('key',"%$key%");
 		return $this->db->resultSet();
 	}
+
+	public function cekDosen($id)
+	{
+		$this->db->query('SELECT COUNT(dosen_id) FROM jadwal WHERE dosen_id=:dosen_id');
+		$this->db->bind('dosen_id',$id);
+		$this->db->execute();
+
+		return $this->db->single();
+    }
 }

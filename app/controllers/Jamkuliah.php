@@ -66,7 +66,12 @@ class Jamkuliah extends Controller {
 	}
 
 	public function hapus($id){
-		if( $this->model('JamkuliahModel')->deleteJamkuliah($id) > 0 ) {
+		$total_id = implode('',$this->model('JamkuliahModel')->cekJamkuliah($id));
+		if( $total_id > 0 ) {
+			Flasher::setMessage('Gagal','dihapus karena data dipakai di jadwal dengan jumlah ' .$total_id ,'danger');
+			header('location: '. base_url . '/Jamkuliah');
+			exit;			
+		}else if( $this->model('JamkuliahModel')->deleteJamkuliah($id) > 0 ) {
 			Flasher::setMessage('Berhasil','dihapus','success');
 			header('location: '. base_url . '/Jamkuliah');
 			exit;			

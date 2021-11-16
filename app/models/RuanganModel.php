@@ -53,4 +53,13 @@ class RuanganModel {
 		return $this->db->rowCount();
 	}
 
+	public function cekRuangan($id)
+	{
+		$this->db->query('SELECT COUNT(ruangan_id) FROM jadwal WHERE ruangan_id=:ruangan_id');
+		$this->db->bind('ruangan_id',$id);
+		$this->db->execute();
+
+		return $this->db->single();
+    }
+
 }

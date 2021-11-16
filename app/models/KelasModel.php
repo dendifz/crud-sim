@@ -66,4 +66,13 @@ class KelasModel {
 		$this->db->bind('key',"%$key%");
 		return $this->db->resultSet();
 	}
+
+	public function cekKelas($id)
+	{
+		$this->db->query('SELECT COUNT(kelas_id) FROM jadwal WHERE kelas_id=:kelas_id');
+		$this->db->bind('kelas_id',$id);
+		$this->db->execute();
+
+		return $this->db->single();
+    }
 }

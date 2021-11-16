@@ -44,6 +44,7 @@ class JamkuliahModel {
 		return $this->db->rowCount();
 	}
 
+	
 	public function deleteJamkuliah($id)
 	{
 		$this->db->query('DELETE FROM ' . $this->table . ' WHERE jam_id=:jam_id');
@@ -52,5 +53,14 @@ class JamkuliahModel {
 
 		return $this->db->rowCount();
 	}
+
+	public function cekJamkuliah($id)
+	{
+		$this->db->query('SELECT COUNT(jam_id) FROM jadwal WHERE jam_id=:jam_id');
+		$this->db->bind('jam_id',$id);
+		$this->db->execute();
+
+		return $this->db->single();
+    }
 
 }

@@ -119,7 +119,12 @@ class kelas extends Controller {
 	}
 
 	public function hapus($id){
-		if( $this->model('KelasModel')->deleteKelas($id) > 0 ) {
+		$total_id = implode('',$this->model('KelasModel')->cekKelas($id));
+		if( $total_id > 0 ) {
+			Flasher::setMessage('Gagal','dihapus karena data dipakai di jadwal dengan jumlah ' .$total_id ,'danger');
+			header('location: '. base_url . '/kelas');
+			exit;			
+		}else if( $this->model('KelasModel')->deleteKelas($id) > 0 ) {
 			Flasher::setMessage('Berhasil','dihapus','success');
 			header('location: '. base_url . '/kelas');
 			exit;			

@@ -77,7 +77,12 @@ class matakuliah extends Controller {
 	}
 
 	public function hapus($id){
-		if( $this->model('MatakuliahModel')->deleteMatakuliah($id) > 0 ) {
+		$total_id = implode('',$this->model('MatakuliahModel')->cekMatakuliah($id));
+		if( $total_id > 0 ) {
+			Flasher::setMessage('Gagal','dihapus karena data dipakai di jadwal dengan jumlah ' .$total_id ,'danger');
+			header('location: '. base_url . '/matakuliah');
+			exit;			
+		}else if( $this->model('MatakuliahModel')->deleteMatakuliah($id) > 0 ) {
 			Flasher::setMessage('Berhasil','dihapus','success');
 			header('location: '. base_url . '/matakuliah');
 			exit;			

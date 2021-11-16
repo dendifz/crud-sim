@@ -65,4 +65,13 @@ class MatakuliahModel {
 		return $this->db->resultSet();
 	}
 
+	public function cekMatakuliah($id)
+	{
+		$this->db->query('SELECT COUNT(matakuliah_id) FROM jadwal WHERE matakuliah_id=:matakuliah_id');
+		$this->db->bind('matakuliah_id',$id);
+		$this->db->execute();
+
+		return $this->db->single();
+    }
+
 }

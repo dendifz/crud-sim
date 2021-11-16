@@ -64,7 +64,12 @@ class Pendidikan extends Controller {
 	}
 
 	public function hapus($id){
-		if( $this->model('PendidikanModel')->deletePendidikan($id) > 0 ) {
+		$total_id = implode('',$this->model('PendidikanModel')->cekPendidikan($id));
+		if( $total_id > 0 ) {
+			Flasher::setMessage('Gagal','dihapus karena data dipakai di dosen dengan jumlah ' .$total_id ,'danger');
+			header('location: '. base_url . '/Pendidikan');
+			exit;			
+		}else if( $this->model('PendidikanModel')->deletePendidikan($id) > 0 ) {
 			Flasher::setMessage('Berhasil','dihapus','success');
 			header('location: '. base_url . '/Pendidikan');
 			exit;			

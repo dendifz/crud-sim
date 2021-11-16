@@ -64,7 +64,12 @@ class Prodi extends Controller {
 	}
 
 	public function hapus($id){
-		if( $this->model('ProdiModel')->deleteProdi($id) > 0 ) {
+		$total_id = implode('',$this->model('ProdiModel')->cekProdi($id));
+		if( $total_id > 0 ) {
+			Flasher::setMessage('Gagal','dihapus karena data dipakai di kelas dengan jumlah ' .$total_id ,'danger');
+			header('location: '. base_url . '/prodi');
+			exit;			
+		}else if( $this->model('ProdiModel')->deleteProdi($id) > 0 ) {
 			Flasher::setMessage('Berhasil','dihapus','success');
 			header('location: '. base_url . '/prodi');
 			exit;			
