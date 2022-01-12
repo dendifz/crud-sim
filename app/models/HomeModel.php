@@ -21,6 +21,19 @@ class HomeModel {
 		return $this->db->resultSet();
     }
 
+	public function getJumlahMatkul()
+	{
+		$this->db->query("SELECT COUNT(matakuliah_id) AS jmlmatkul FROM matakuliah");
+		return $this->db->resultSet();
+	}
+
+	public function getJumlahRuangan()
+	{
+		$this->db->query("SELECT COUNT(ruangan_id) AS jmlruangan FROM ruangan");
+		return $this->db->resultSet();
+	}
+
+
     public function getJumlahJadwal()
 	{
 		$this->db->query('SELECT COUNT(jadwal_id) As jmljadwal FROM jadwal');

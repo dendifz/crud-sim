@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Halaman Utama</h1>
+            <h1><?= $data['title'] ?></h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -22,8 +22,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-              <?php foreach ($data['jmluser'] as $row) :?>
-                <h3><?= $row['jmluser'] ?></h3>
+              <?php foreach ($data['jmlmatkul'] as $row) :?>
+                <h3><?= $row['jmlmatkul'] ?></h3>
                 <?php endforeach; ?>
                 <p>User</p>
               </div>
@@ -38,8 +38,8 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-              <?php foreach ($data['jmljadwal'] as $row) :?>
-                <h3><?= $row['jmljadwal'] ?></h3>
+              <?php foreach ($data['jmlruangan'] as $row) :?>
+                <h3><?= $row['jmlruangan'] ?></h3>
                 <?php endforeach; ?>
 
                 <p>Jadwal</p>
@@ -90,8 +90,77 @@
 
     </section>
     <!-- /.content -->
+    <section class="content">
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Chart Dosen</h3>
+        </div>
+        <!DOCTYPE html>
+        <html>
+        <style>
+        canvas {text-align: center; 
+        margin-left: auto;
+        margin-right: auto;}
+
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+        <body>
+          <?php $noX = 1; ?>
+          <?php foreach ($data['SSatu'] as $rowX) : ?>
+          <?php $noX++;
+          endforeach; ?>
+
+          <?php $noY = 1; ?>
+          <?php foreach ($data['SDua'] as $rowY) : ?>
+          <?php $noY++;
+          endforeach; ?>
+
+          <?php $noZ = 1; ?>
+          <?php foreach ($data['STiga'] as $rowZ) : ?>
+          <?php $noZ++;
+          endforeach; ?>
+
+          <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+          <script>
+            var xValues = ["S1", "S2", "S3"];
+            var yValues = [<?= $rowX['jml_S1']; ?>, <?= $rowY['jml_S2']; ?>, <?= $rowZ['jml_S3']; ?>];
+            var barColors = ["red", "green", "blue"];
+
+            new Chart("myChart", {
+              type: "bar",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  backgroundColor: barColors,
+                  data: yValues
+                }]
+              },
+              options: {
+                legend: {
+                  display: false
+                },
+                title: {
+                  display: true,
+                  text: "Jenjang Pendidikan Terakhir Dosen"
+                }
+              }
+            });
+          </script>
+
+        </body>
+
+        </html>
+
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </section>
   </div>
   <!-- /.content-wrapper -->
 
+  
 
 

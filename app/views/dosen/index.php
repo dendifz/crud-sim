@@ -24,7 +24,7 @@
 
       <div class="card">
       <div class="card-header">
-          <h3 class="card-title"><?= $data['title'] ?></h3> <div class="btn-group float-right"><a href="<?= base_url; ?>/dosen/tambah" class="btn float-right btn-xs btn btn-primary">Tambah Data Dosen</a><a href="<?= base_url; ?>/dosen/laporan" class="btn float-right btn-xs btn btn-info">Laporan Dosen</a><a href="<?= base_url; ?>/dosen/lihatlaporan" class="btn float-right btn-xs btn btn-warning">Lihat Laporan Dosen</a></div>
+          <h3 class="card-title"><?= $data['title'] ?></h3> <div class="btn-group float-right"><a href="<?= base_url; ?>/dosen/tambah" class="btn float-right btn-xs btn btn-primary">Tambah Data Dosen</a><a href="<?= base_url; ?>/dosen/laporan" class="btn float-right btn-xs btn btn-info">Laporan Dosen</a><a href="<?= base_url; ?>/dosen/lihatlaporan" class="btn float-right btn-xs btn btn-warning">Lihat Laporan Dosen</a><a href="<?= base_url; ?>/dosen/lihatchart" class="btn float-right btn-xs btn btn-success">Lihat Chart</a></div>
         </div>
         <div class="card-body">
         <form action="<?= base_url; ?>/dosen/cari" method="post">
@@ -47,6 +47,7 @@
                       <th style="width: 10px">#</th>
                       <th>Nama Dosen</th>
                       <th>Alamat</th>
+                      <th>Tgl Lahir</th>
                       <th>Telepon</th>
                       <th>Pendidikan</th>
                       <th style="width: 150px">Action</th>
@@ -59,6 +60,7 @@
                       <td><?= $no; ?></td>
                       <td><?= $row['nama_dosen'];?></td>
                       <td><?= $row['alamat_dosen'];?></td>
+                      <td><?= $row['tgl_lahir']; ?></td>
                       <td><?= $row['tlp_dosen'];?></td>
                       <td><?= $row['nama_pen'];?></td>
                       <td>
