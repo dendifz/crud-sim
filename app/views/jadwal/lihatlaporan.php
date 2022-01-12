@@ -87,7 +87,6 @@
                       <td><?= $no; ?></td>
                       <td><?= $row['hari'];?></td>
                       <td><?= $row['jamkuliah'];?></td>
-                      <td><?= $row['semester'];?></td>
                       <td><?php foreach ($data['kelas'] as $row1) :?><?php if($row['kelas_id'] == $row1['kelas_id']) { echo $row1['semester'];}?><?php endforeach; ?></td>
                       <td><?php foreach ($data['kelas'] as $row1) :?><?php if($row['kelas_id'] == $row1['kelas_id']) { echo $row1['nama_prodi'];}?> <?php endforeach; ?> - <?= $row['nama_kelas'];?></td>
                       <td><?= $row['nama_matakuliah'];?></td>

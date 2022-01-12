@@ -23,9 +23,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label >Jam Kuliah</label>
-                    <input type="text" class="form-control" placeholder="08:00 - 09:00" name="jamkuliah">
+                  <div class="input-group time" id="timepicker">
+                    <span class="input-group-append input-group-addon"><span class="input-group-text"><i class="fa fa-clock"></i></span></span><input type="text" class="form-control" placeholder="Jam Mulai" name="jamkuliah">
                   </div>
-                </div>
+                  </div>
+
                 <!-- /.card-body -->
 
                 <div class="card-footer">

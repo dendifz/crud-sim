@@ -25,6 +25,7 @@
                   <div class="form-group">
                     <label >Jam Kuliah</label>
                     <input type="text" class="form-control" placeholder="masukkan jam..." name="jamkuliah" value="<?= $data['Jamkuliah']['jamkuliah'];?>">
+                
                   </div>
                   
                 </div>
